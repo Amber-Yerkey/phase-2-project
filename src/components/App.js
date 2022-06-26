@@ -9,14 +9,15 @@ import Footer from "./Footer";
 const theme = {
   global: {
     colors: {
-      header: '#228BE6',
+      header: 'green',
+      background: '#ebedd5'
     },
     font: {
       family: 'Roboto',
       size: '18px',
-      height: '20px',
+      height: '20px'
     },
-  },
+  }
 };
 
 const AppBar = (props) => (
@@ -25,7 +26,7 @@ const AppBar = (props) => (
     direction='row'
     align='center'
     justify='center'
-    background='header'
+    background= "url('https://data.whicdn.com/images/346178640/original.png')"
     pad={{ left: 'medium', right: 'small', vertical: 'small' }}
     elevation='medium'
     style={{ zIndex: '1' }}
