@@ -2,8 +2,22 @@ import React from 'react';
 import { Box, Carousel, Image } from 'grommet';
 
 
-function Home() {
+function Home({villager}) {
+    // console.log(villager)
     const date = new Date()
+    const month  = date.getUTCMonth() + 1
+    const day = date.getUTCDate()
+
+    console.log(`${day} + / + ${month}`)
+
+    const newArr = [];
+    const VillagerBday = villager.map((newBday) => {
+        if (newBday.birthday === `${day}` + "/" + `${month}`){
+            newArr.push(newBday.id)
+        } else {
+        }
+    })
+    console.log(newArr)
     return ( 
         <><h1 align="center">Animal Crossing: New Horizon Guide</h1>
         <p align="center">This is a guide for the video game Animal Crossing: New Horizons.
@@ -11,12 +25,12 @@ function Home() {
 
       <Box align="center">
         <Box>
-            Birthdays 
-            {/* Today is {$name} 's birthday - will change the images as as well*/}
+            <h2>Birthdays</h2>
         </Box>
         <Carousel play={5000}>
-            <Image src='https://acnhapi.com/v1/images/villagers/1' />
-            <Image src='https://acnhapi.com/v1/images/villagers/2' />
+            {newArr.map((bday) => {
+                return <Image key={bday} src={`https://acnhapi.com/v1/images/villagers/${bday}`} />
+            })}
         </Carousel>
       </Box>
         </>

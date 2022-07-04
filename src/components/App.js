@@ -53,7 +53,7 @@ function App() {
           <NavBar />
         </AppBar>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home villager={villagerList} />} />
           <Route path="/villagers" element={<VillagerList villager={villagerList} />} />
           <Route path="/villagers/:id" element={<VillagerInfo />} />
           <Route path="/critterpedia" element={<CritterData />} />
