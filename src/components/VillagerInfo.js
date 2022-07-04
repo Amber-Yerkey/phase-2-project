@@ -5,6 +5,7 @@ function VillagerInfo() {
     const params = useParams();
     const [newVillagers, setNewVillagers] = useState([]);
 
+    //pulls villager with that specific id to return info
     useEffect(() => {
         fetch("https://acnhapi.com/v1a/villagers/" + params.id)
             .then((resp) => resp.json())

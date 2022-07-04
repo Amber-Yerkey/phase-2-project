@@ -8,6 +8,7 @@ function CritterData() {
     const [favoriteBugs, setFavoriteBugs] = useState([]);
     const [fullListView, setFullListView] = useState(true);
 
+    //grabs all the bugs for the grid from API
     useEffect(() => {
         fetch("https://acnhapi.com/v1a/bugs/")
             .then((resp) => resp.json())
@@ -15,7 +16,7 @@ function CritterData() {
             .catch((error) => { console.error(error) })
     }, [])
 
-
+    //grabs current favorited items from JSON server
     useEffect(() => {
         fetch("http://localhost:3000/bugs")
             .then((resp) => resp.json())
@@ -32,6 +33,7 @@ function CritterData() {
         setFullListView(false)
     }
 
+    //creates the delete and post request for a click
     function handleFavorite(id, icon_uri, name, availability, price) {
         const itemData = {
             id: id,
@@ -73,6 +75,8 @@ function CritterData() {
         }
     }
 
+
+    //to pass to critter grid but split it up to create if statement
     const fullList = {
         bugList: bugList,
         checked: checked,
@@ -94,6 +98,7 @@ function CritterData() {
     }
 
     return (<>
+    {/* if on the full list tab, pass the full list else pass on favorited bugs */}
         {fullListView ? <CritterGrid {...fullList} /> : <CritterGrid {...favList} />}
     </>);
 }

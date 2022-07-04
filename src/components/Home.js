@@ -3,13 +3,13 @@ import { Box, Carousel, Image } from 'grommet';
 
 
 function Home({villager}) {
-    // console.log(villager)
+    //gets the current date and then breaks it up by month / day
     const date = new Date()
     const month  = date.getUTCMonth() + 1
     const day = date.getUTCDate()
 
-    console.log(`${day} + / + ${month}`)
-
+    //creates new array and then checks all for that bday
+    //tried to do this all in the carousel instead of breaking up to array but would not work
     const newArr = [];
     const VillagerBday = villager.map((newBday) => {
         if (newBday.birthday === `${day}` + "/" + `${month}`){

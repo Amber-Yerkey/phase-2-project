@@ -40,6 +40,7 @@ function App() {
 
   const [villagerList, setVillagers] = useState([]);
   
+  //pull villager data to give to multiple components
   useEffect(() => {
     fetch("https://acnhapi.com/v1a/villagers/")
         .then((resp) => resp.json())

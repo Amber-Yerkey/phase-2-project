@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Card, CardHeader, CardBody, Grid, Grommet } from 'grommet'
 
@@ -34,11 +33,13 @@ function VillagerCard({villager}) {
         <Box pad="large">
             <Grid gap="small" rows="small" columns={{count: 'fit', size: 'small'}} >
                 {villager.map((newCard) => (
+                  // creates link for each card to push to new card location
                     <Link to={`/villagers/${newCard.id}`} key={newCard.id}>
                     <Card height="small" width="small" background='#f1f3c4'
                     hoverIndicator={{
                         background: { color: 'background-contrast' }
                         , elevation: 'medium'
+                        // kept the on click in order to keep the hover styling
                     }} onClick={() => console.log("Click")}>
                     <CardHeader className='cardHeader'><h4>{newCard.name['name-USen']}</h4></CardHeader>
                     <CardBody><img src={newCard.icon_uri} /></CardBody>
