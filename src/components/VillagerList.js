@@ -1,34 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import { Link, Outlet } from "react-router-dom"
 import VillagerCard from "./VillagerCard"
 import VillagerFilter from './VillagerFilter';
 
 
 
-function VillagerList() {
+function VillagerList({villager}) {
 
+    const [search, setSearch] = useState("");
 
-const [villagerList, setVillagers] = useState([]);
-const [search, setSearch] = useState("");
+    const villagerSearch = villager
+        .filter((VillagerCard) => VillagerCard.name['name-USen'].toLowerCase().includes(search.toLowerCase()));
 
-useEffect(() => {
-  fetch("https://acnhapi.com/v1a/villagers/")
-    .then((resp) => resp.json())
-    .then((data) => { setVillagers(data.map((villager) => {return villager})) })
-    .catch((error) => {console.error(error)})
-}, [])
-
-const villagerSearch = villagerList
-.filter((VillagerCard) => VillagerCard.name['name-USen'].toLowerCase().includes(search.toLowerCase()));
-
-    return ( 
+    return (
         <>
-        <h1 align="center">Villagers</h1>
-        <VillagerFilter search={search} setSearch={setSearch} />
-        {villagerSearch.map((villager) => 
-        <VillagerCard key={villager.id} name={villager.name['name-USen']} image={villager.icon_uri} />)}
-        
+            <h1 align="center">Villagers</h1>
+            <VillagerFilter search={search} setSearch={setSearch} />
+
+            <nav>
+                {console.log(villager)}
+            {/* {villagerSearch.map((villager) => ( */}
+                {/* <Link to={`/villagers/${villager.id}`} key={villager.id}> */}
+                    <VillagerCard key={villager.id} villager={villagerSearch} />
+                {/* </Link> */}
+             {/* ))} */}
+            </nav>
         </>
-     );
+    );
 }
+
+// name={villager.name['name-USen']} image={villager.icon_uri}
 
 export default VillagerList;

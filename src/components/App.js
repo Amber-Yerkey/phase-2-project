@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Route, Routes } from "react-router-dom"
 import { Box, Grommet } from 'grommet';
 import Home from "./Home";
 import NavBar from './NavBar';
 import VillagerList from "./VillagerList";
 import CritterGrid from "./CritterGrid";
-import Footer from "./Footer";
+import VillagerInfo from './VillagerInfo';
 
 const theme = {
   global: {
@@ -36,8 +36,16 @@ const AppBar = (props) => (
 );
 
 
-
 function App() {
+
+  const [villagerList, setVillagers] = useState([]);
+  
+  useEffect(() => {
+    fetch("https://acnhapi.com/v1a/villagers/")
+        .then((resp) => resp.json())
+        .then((data) => { setVillagers(data) })
+        .catch((error) => { console.error(error) })
+}, [])
 
   return (
     <Grommet theme={theme}>
@@ -46,10 +54,11 @@ function App() {
         </AppBar>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/villagers" element={<VillagerList />} />
+          <Route path="/villagers" element={<VillagerList villager={villagerList} />} />
+          <Route path="/villagers/:id" element={<VillagerInfo />} />
           <Route path="/critterpedia" element={<CritterGrid />} />
+          <Route path="*" element={<p>There's Nothing Here!</p>} />
         </Routes>
-        <Footer />
     </Grommet>
   );
 }

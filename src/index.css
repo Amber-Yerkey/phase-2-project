@@ -1,5 +1,26 @@
 body {
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    height: auto;
+    width: auto;
+    background-color:#ebedd5;
+  }
+
+  .villager-container {
+    display: flex;
+    justify-content: center;
+    padding: 5em;
+    gap: 2em;
+  }
+  .villager-image {
+    width: auto;
+    height: auto;
+  }
+  .villager-info {
+    text-align: left;
+  }
+
+  .cardHeader{
+    display: flex;
+    margin: 0;
+    justify-content: center;
   }

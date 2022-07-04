@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, CheckBox, DataTable, Image } from 'grommet';
+import { Box, CheckBox, DataTable} from 'grommet';
 // import { bugs } from "../dataTest";
 
 
@@ -58,12 +58,10 @@ function CritterGrid() {
                     {
                         property: 'icon_uri',
                         render: ({ icon_uri }) => (
-                            <Image
-                                key={icon_uri}
-                                src={`${icon_uri}`}
-                            />
+                            <img src={`${icon_uri}`} />
                         ),
-                        header: 'Icon'
+                        header: 'Icon',
+                        sortable: false
                     },
                     // remaining columns, just add new one for it to appear
                     { property: 'name.name-USen', header: 'Name' },
