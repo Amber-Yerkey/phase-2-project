@@ -12,12 +12,11 @@ function Home() {
       <Box align="center">
         <Box>
             Birthdays 
-            {/* Today is {$name} 's birthday */}
+            {/* Today is {$name} 's birthday - will change the images as as well*/}
         </Box>
         <Carousel play={5000}>
             <Image src='https://acnhapi.com/v1/images/villagers/1' />
             <Image src='https://acnhapi.com/v1/images/villagers/2' />
-            <Image src='https://acnhapi.com/v1/images/villagers/3' />
         </Carousel>
       </Box>
         </>

@@ -4,7 +4,7 @@ import { Box, Grommet } from 'grommet';
 import Home from "./Home";
 import NavBar from './NavBar';
 import VillagerList from "./VillagerList";
-import CritterGrid from "./CritterGrid";
+import CritterData from "./CritterData";
 import VillagerInfo from './VillagerInfo';
 
 const theme = {
@@ -56,7 +56,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/villagers" element={<VillagerList villager={villagerList} />} />
           <Route path="/villagers/:id" element={<VillagerInfo />} />
-          <Route path="/critterpedia" element={<CritterGrid />} />
+          <Route path="/critterpedia" element={<CritterData />} />
           <Route path="*" element={<p>There's Nothing Here!</p>} />
         </Routes>
     </Grommet>
