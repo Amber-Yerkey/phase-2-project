@@ -3,9 +3,6 @@ import { useParams } from 'react-router-dom';
 
 function VillagerInfo() {
     const params = useParams();
-    // console.log(params.id)
-    // console.log(params)
-
     const [newVillagers, setNewVillagers] = useState([]);
 
     useEffect(() => {
@@ -15,10 +12,8 @@ function VillagerInfo() {
             .catch((error) => { console.error(error) })
     }, [])
 
-    // console.log(newVillagers)
     return (
         <div>
-            {/* <h2>{newVillagers.name['name-USen']}</h2> */}
             <div className='villager-container' >
                 <img className= 'villager-image' src={newVillagers.image_uri} />
                 <div className='villager-info'>

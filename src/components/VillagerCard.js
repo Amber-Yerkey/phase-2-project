@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Card, CardHeader, CardBody, Grid, ResponsiveContext, Grommet } from 'grommet'
+import { Box, Card, CardHeader, CardBody, Grid, Grommet } from 'grommet'
 
 function VillagerCard({villager}) {
-    const size = useContext(ResponsiveContext);
-    // console.log(villager)
 
     const theme = {
         global: {
@@ -53,15 +51,6 @@ function VillagerCard({villager}) {
     </Grommet>
     );
 }
-
-
-// {newCard.name}
-{/* <Card pad="small" background='#f1f3c4'
-hoverIndicator={{
-    background: { color: 'background-contrast' }
-    , elevation: 'medium'
-}}> */}
-
 
 
 export default VillagerCard;
