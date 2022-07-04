@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import { Box, CheckBox, DataTable, Grid, Button } from 'grommet';
+import { Box, CheckBox, DataTable, Grid } from 'grommet';
 import CritterNav from './CritterNav';
 
 
-function CritterGrid({ bugList, checked, setChecked, handleFavorite, viewFavorites, resetList }) {
+function CritterGrid({ bugList, checked, setChecked, handleFavorite, favoriteBugs, fullListView, resetList, resetFavList }) {
 
     //used for check boxes
-    const onCheck = (event, value, id, icon_uri, name, availability, price ) => {
+    const onCheck = (event, value, id, icon_uri, name, availability, price) => {
         if (event.target.checked) {
             setChecked([...checked, value])
         } else {
             setChecked(checked.filter((item) => item !== value));
         }
-        handleFavorite(id, icon_uri, name, availability, price )
+        handleFavorite(id, icon_uri, name, availability, price)
     };
-
-    //allows a check all for the boxes
-    const onCheckAll = (event) =>
-        setChecked(event.target.checked ? bugList.map((datum) => datum.name) : []);
 
     return (
 
@@ -42,9 +37,11 @@ function CritterGrid({ bugList, checked, setChecked, handleFavorite, viewFavorit
                 rows={['flex']}
                 gap="small"
             >
-                <CritterNav viewFavorites={viewFavorites} resetList={resetList} />
+                {/* Navigation Component */}
+                <CritterNav resetList={resetList} resetFavList={resetFavList} />
+
                 <Box gridArea='main'>
-                    {/* leftmost column for check boxes  */}
+                    {/* leftmost column for check boxes */}
                     <DataTable columns={[
                         {
                             property: 'checkbox',
@@ -52,18 +49,12 @@ function CritterGrid({ bugList, checked, setChecked, handleFavorite, viewFavorit
                                 <CheckBox
                                     key={id}
                                     checked={checked.indexOf(id) !== -1}
-                                    onChange={(e) => 
+                                    onChange={(e) =>
                                         onCheck(e, id, id, icon_uri, name, availability, price)}
                                 />
                             ),
                             header: (
-                                <CheckBox
-                                    checked={checked.length === bugList.length}
-                                    indeterminate={
-                                        checked.length > 0 && checked.length < bugList.length
-                                    }
-                                    onChange={onCheckAll}
-                                />
+                                <CheckBox />
                             ),
                             // prevents sorting checkboxes
                             sortable: false,
@@ -87,7 +78,7 @@ function CritterGrid({ bugList, checked, setChecked, handleFavorite, viewFavorit
                         { property: 'availability.time', header: 'Time' }
                     ]}
                         // points to data sorce and determines remaining columns sortable
-                        data={bugList} sortable />
+                        data={fullListView ? bugList : favoriteBugs} sortable />
                 </Box>
             </Grid>
         </Box>
