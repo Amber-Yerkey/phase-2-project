@@ -1,4 +1,4 @@
-![Animal Crossing: New Horizons](https://lgbtqgamearchive.files.wordpress.com/2020/04/animal-crossing-logo.png)
+![Dungeons and Dragons](https://images.ctfassets.net/swt2dsco9mfe/1qU2YMq2MSczf9KGme5gu7/a580e2f158f2c08faad3a9d4463af0bc/dnd-hub-logo.png?fm=avif)
 
 # An Animal Crossing: New Horizon Unofficial Guide
 
